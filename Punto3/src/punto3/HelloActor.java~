@@ -5,11 +5,6 @@
  */
 package punto3;
 
-/*
-	Hola este es el código de HelloActor versionado por Santiago Acosta,
-	compañero de Camilo, el primer autor del código
-*/
-
 import akka.actor.UntypedActor;
 
 /**
