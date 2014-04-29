@@ -27,30 +27,28 @@ public class Punto3 {
         int b[]={-15,5};
         
                
-        Props prop=Props.create(HelloActor.class);
+        Props propCliente=Props.create(Cliente.class);
+        Props propBanco=Props.create(Banco.class);
         
         
         
         ActorSystem system = ActorSystem.create("Hola");
-        ActorRef helloActor = system.actorOf(prop , "hola");
         
+        ActorRef clienteA = system.actorOf(propCliente , "ClienteA");
+        ActorRef clienteB = system.actorOf(propCliente , "ClienteB");
+        ActorRef banco = system.actorOf(propBanco , "Banco");
+
         for(int i=0;i<a.length;i++)
-            helloActor.tell(a[i], helloActor);
+            clienteA.tell(a[i], banco);
         
         for(int i=0;i<b.length;i++)
-            helloActor.tell(b[i], helloActor);
+            clienteB.tell(b[i], banco);
         
-        helloActor.tell("Impresion", helloActor);
-        
+        Thread.sleep(10);
+        banco.tell("a", banco);
         
         system.shutdown();
-        system.awaitTermination();//JOIN
-        
-        
-        
-        
-        
-        
+        system.awaitTermination();//JOIN       
 
     }
 
