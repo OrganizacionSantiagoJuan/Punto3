@@ -21,12 +21,13 @@ public class Banco extends UntypedActor{
     public void onReceive(Object message) throws Exception {
         if (message instanceof Integer) {
             int a = (int) message;
-            base=base+a;            
-        } else if(message instanceof String) {
-            String s= (String) message;
-            System.out.println("Base: "+base);
+            base=base+a; 
+            System.out.println(getSender());
+            System.out.println("Transacción Actual: "+a);
+            System.out.println("Saldo en la cuenta: "+base);
+            System.out.println("");
             
-        }
+        } 
         else {
             unhandled(message);
         }
